@@ -63,7 +63,9 @@ public class DAOFactory {
         if (useJdbc) {
             return "Data Layer: MySQL (Live Database - free_clinic)";
         } else {
-            return "Data Layer: Memory Provider (Schema Simulated - MySQL Offline)";
+            String reason = DBConnection.getLastError();
+            return "Data Layer: Memory Provider (Schema Simulated - MySQL Offline)"
+                    + (reason != null ? " - " + reason : "");
         }
     }
 

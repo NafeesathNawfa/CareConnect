@@ -1,0 +1,5 @@
+# Copy this file to "db.properties" (same folder as run.bat) and edit it.
+# db.properties is git-ignored so your password is never committed.
+db.url=jdbc:mysql://localhost:3306/free_clinic?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+db.user=root
+db.pass=your_mysql_password

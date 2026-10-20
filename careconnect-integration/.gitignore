@@ -1,0 +1,6 @@
+bin/
+*.class
+.DS_Store
+*.log
+db.properties
+lib/
