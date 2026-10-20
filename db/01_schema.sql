@@ -1,6 +1,5 @@
 -- =====================================================
 -- Free Clinic Appointment System : schema (MySQL 8+)
--- Run order: 01_schema -> 02_logic -> 03_seed
 -- =====================================================
 DROP DATABASE IF EXISTS free_clinic;
 CREATE DATABASE free_clinic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -76,9 +75,6 @@ CREATE TABLE appointment (
     reason         VARCHAR(255),
     created_at     TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at     TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    -- Generated column: holds slot_id for every non-cancelled appointment, NULL otherwise.
-    -- UNIQUE on it => a slot can have only ONE live appointment (blocks double booking
-    -- even if two people click at the same moment). Cancelled rows become NULL, freeing the slot.
     active_slot_id INT GENERATED ALWAYS AS (IF(status = 'CANCELLED', NULL, slot_id)) VIRTUAL,
     CONSTRAINT fk_appt_patient FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
     CONSTRAINT fk_appt_slot    FOREIGN KEY (slot_id)    REFERENCES slot(slot_id),

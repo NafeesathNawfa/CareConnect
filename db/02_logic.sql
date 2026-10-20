@@ -200,8 +200,6 @@ BEGIN
     ON DUPLICATE KEY UPDATE is_open = VALUES(is_open), notes = VALUES(notes);
 END$$
 
--- Admin: generate equal-length slots for a doctor on a clinic day
--- e.g. CALL sp_generate_slots(1, 1, '09:00', '12:00', 20);
 CREATE PROCEDURE sp_generate_slots(
     IN p_doctor_id     INT,
     IN p_clinic_day_id INT,
