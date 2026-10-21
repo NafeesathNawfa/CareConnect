@@ -1,8 +1,8 @@
 -- =====================================================
 -- Free Clinic Appointment System : schema (MySQL 8+)
 -- =====================================================
-DROP DATABASE IF EXISTS free_clinic;
-CREATE DATABASE free_clinic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- DROP DATABASE IF EXISTS free_clinic;   -- commented out: would delete an existing database
+CREATE DATABASE IF NOT EXISTS free_clinic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE free_clinic;
 
 -- ---------- Lookup ----------
