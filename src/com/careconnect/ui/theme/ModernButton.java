@@ -1,14 +1,10 @@
 package com.careconnect.ui.theme;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.*;
 
-/**
- * Modern rectangular styled button honoring the blue palette.
- * Supports distinct states: normal, hover, pressed, focused, disabled.
- */
 public class ModernButton extends JButton {
 
     public enum StyleType {
