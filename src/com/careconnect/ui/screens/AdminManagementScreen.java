@@ -528,7 +528,7 @@ public class AdminManagementScreen extends JPanel {
 
         JPanel bottomBar = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
         bottomBar.setOpaque(false);
-        ModernButton removeBtn = new ModernButton("Remove from Waitlist (sp_leave_waitlist)", ModernButton.StyleType.DANGER);
+        ModernButton removeBtn = new ModernButton("Remove from Waitlist", ModernButton.StyleType.DANGER);
         removeBtn.addActionListener(e -> handleRemoveWaitlist());
         bottomBar.add(removeBtn);
         panel.add(bottomBar, BorderLayout.SOUTH);
@@ -570,7 +570,7 @@ public class AdminManagementScreen extends JPanel {
         boolean confirmed = ConfirmationDialog.showConfirm(
                 SwingUtilities.getWindowAncestor(this),
                 "Remove Patient from Waitlist",
-                "Remove patient <b>" + name + "</b> from the waitlist?<br><br>Calls sp_leave_waitlist.",
+                "Remove patient <b>" + name + "</b> from the waitlist?<br><br>They will lose their place in the queue.",
                 "Remove Patient",
                 true
         );
