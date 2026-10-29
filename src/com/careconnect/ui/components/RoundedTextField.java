@@ -17,6 +17,7 @@ public class RoundedTextField extends JTextField {
     private final int radius;
     private final int iconSize;
     private final IconPainter.Icon leadingIcon;
+    private IconPainter.Icon trailingIcon;
     private boolean focused;
     private Color borderColor;
     private Color iconColor;
@@ -42,8 +43,7 @@ public class RoundedTextField extends JTextField {
         setForeground(Theme.TEXT_BODY);
         setCaretColor(Theme.PRIMARY);
         setSelectionColor(Theme.TINT);
-        int left = leadingIcon != null ? 44 : 16;
-        setBorder(BorderFactory.createEmptyBorder(0, left, 0, 14));
+        applyInsets();
 
         addFocusListener(new FocusAdapter() {
             @Override public void focusGained(FocusEvent e) {
@@ -64,6 +64,20 @@ public class RoundedTextField extends JTextField {
     public void setBorderColor(Color c) {
         this.borderColor = c;
         repaint();
+    }
+
+    /** Adds (or replaces) a decorative icon drawn on the right inside the field. */
+    public void setTrailingIcon(IconPainter.Icon icon) {
+        this.trailingIcon = icon;
+        applyInsets();
+        revalidate();
+        repaint();
+    }
+
+    private void applyInsets() {
+        int left = leadingIcon != null ? 44 : 16;
+        int right = trailingIcon != null ? 44 : 14;
+        setBorder(BorderFactory.createEmptyBorder(0, left, 0, right));
     }
 
     /** Paints a red ring to indicate a validation error. */
@@ -91,6 +105,15 @@ public class RoundedTextField extends JTextField {
             ig.setColor(iconColor);
             ig.setStroke(new BasicStroke(1.6f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
             leadingIcon.paint(ig, iconSize);
+            ig.dispose();
+        }
+
+        if (trailingIcon != null) {
+            Graphics2D ig = (Graphics2D) g2.create();
+            ig.translate(getWidth() - 14 - iconSize, (getHeight() - iconSize) / 2);
+            ig.setColor(iconColor);
+            ig.setStroke(new BasicStroke(1.6f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+            trailingIcon.paint(ig, iconSize);
             ig.dispose();
         }
 

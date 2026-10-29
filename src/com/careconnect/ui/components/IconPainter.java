@@ -67,6 +67,36 @@ public final class IconPainter {
         g2.dispose();
     };
 
+    /** Left-pointing arrow, used by the "Back to Login" control. */
+    public static final Icon ARROW_LEFT = (g, size) -> {
+        Graphics2D g2 = prep(g, size);
+        g2.drawLine((int) (size * 0.20), size / 2, (int) (size * 0.84), size / 2);
+        g2.drawLine((int) (size * 0.20), size / 2, (int) (size * 0.45), (int) (size * 0.25));
+        g2.drawLine((int) (size * 0.20), size / 2, (int) (size * 0.45), (int) (size * 0.75));
+        g2.dispose();
+    };
+
+    /** Decorative calendar glyph shown inside the date-of-birth field. */
+    public static final Icon CALENDAR = (g, size) -> {
+        Graphics2D g2 = prep(g, size);
+        g2.drawRoundRect((int) (size * 0.13), (int) (size * 0.20), (int) (size * 0.74), (int) (size * 0.66),
+                (int) (size * 0.11), (int) (size * 0.11));
+        g2.drawLine((int) (size * 0.13), (int) (size * 0.40), (int) (size * 0.87), (int) (size * 0.40));
+        g2.drawLine((int) (size * 0.32), (int) (size * 0.10), (int) (size * 0.32), (int) (size * 0.28));
+        g2.drawLine((int) (size * 0.68), (int) (size * 0.10), (int) (size * 0.68), (int) (size * 0.28));
+        g2.dispose();
+    };
+
+    /** Small "information" badge used beside form hints. */
+    public static final Icon INFO = (g, size) -> {
+        Graphics2D g2 = prep(g, size);
+        g2.drawOval((int) (size * 0.10), (int) (size * 0.10), (int) (size * 0.80), (int) (size * 0.80));
+        g2.drawLine(size / 2, (int) (size * 0.44), size / 2, (int) (size * 0.70));
+        g2.fillOval(size / 2 - (int) Math.max(1, size * 0.05), (int) (size * 0.28),
+                (int) Math.max(2, size * 0.10), (int) Math.max(2, size * 0.10));
+        g2.dispose();
+    };
+
     public static final Icon PHONE = (g, size) -> {
         Graphics2D g2 = prep(g, size);
         g2.drawRoundRect((int) (size * 0.30), (int) (size * 0.12), (int) (size * 0.40), (int) (size * 0.76), (int) (size * 0.12), (int) (size * 0.12));
